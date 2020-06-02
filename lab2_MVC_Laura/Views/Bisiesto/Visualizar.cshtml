@@ -1,0 +1,53 @@
+﻿@model lab2_MVC_Laura.Models.ClaseBisiesto 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visualizar</title>
+</head>
+<body>
+    <div> 
+        <h1>Años Bisiesto y no Bisiesto</h1>
+        <br /><br/>
+        @{ 
+            Model.bisiesto = "";
+            Model.nobisisesto = "";
+            Model.resultado = "";
+
+            for(int i= Model.inicio; i <= Model.termino;i++)
+            {
+                Model.Todo += i + ",";
+
+                if(i % 400 == 0)
+                {
+                    Model.bisiesto = Model.bisiesto + i + "\n";
+                }
+                else if (i % 400 == 0 && i % 100 != 0)
+                {
+
+                }
+                else
+                {
+                    Model.nobisisesto += i + "\n";
+                }
+            }
+
+            if (Request["Anio"] == "Bisiestos"){ Model.resultado = Model.bisiesto; }
+
+            if (Request["Anio"] == "No Bisiestos"){ Model.resultado = Model.nobisisesto; }
+
+            if (Request["Anio"] == "Ambos"){ Model.resultado = Model.Todo; }
+
+        }
+
+        <h2><strong>@Request["Anio"]</strong></h2>
+        <div><strong>@Model.resultado</strong></div>
+        <a href="javascript:history.back()"><< Retornar al Contenido</a>
+    </div>
+</body>
+</html>

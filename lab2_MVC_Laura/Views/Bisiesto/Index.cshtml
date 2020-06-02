@@ -1,0 +1,54 @@
+﻿@model lab2_MVC_Laura.Models.ClaseBisiesto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>Años Bisiesto y no Bisiesto</h1>
+        <br /> <br />
+        <div>
+            @using (Html.BeginForm("visualizar", "Bisiesto", FormMethod.Post))
+            {
+                <div>
+                    @*Html.Label("Año inicial: ")*@
+                    @Html.LabelFor(model => model.inicio, "Año inicial: ")
+                    @Html.TextBoxFor(model => model.inicio)
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.termino, "Año inicial: ")
+                    @Html.TextBoxFor(model => model.termino)
+                </div>
+
+                <label>
+
+                    @Html.RadioButton("anio", "Bisiestos", true) <label>Años Bisiestos</label>
+                </label>
+
+                <label>
+
+                    @Html.RadioButton("anio", "No Bisiestos", true) <label>Años No Bisiestos</label>
+                </label>
+
+                <label>
+
+                    @Html.RadioButton("anio", "No Bisiestos", true) <label>Ambos</label>
+                </label>
+
+                <br /><br />
+                <input type="submit" value="Gnenerar" />
+                <br /><br />
+
+            }
+        </div>
+    </div>
+</body>
+</html>
